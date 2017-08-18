@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170818081136) do
+ActiveRecord::Schema.define(version: 20170818081034) do
 
   create_table "authentications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "email"
+    t.string "uid", default: "", null: false
+    t.string "provider", default: "email", null: false
     t.string "password_digest"
-    t.string "uid"
-    t.string "provider"
+    t.string "access_token"
     t.datetime "confirm_send_at"
     t.string "confirm_token"
     t.datetime "confirm_at"
@@ -24,15 +24,8 @@ ActiveRecord::Schema.define(version: 20170818081136) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["uid", "provider"], name: "index_authentications_on_uid_and_provider", unique: true
     t.index ["user_id"], name: "index_authentications_on_user_id"
-  end
-
-  create_table "tokens", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "access_token"
-    t.bigint "authentication_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["authentication_id"], name: "index_tokens_on_authentication_id"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

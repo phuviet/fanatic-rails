@@ -18,12 +18,9 @@
 end
 
 50.times do
-  email = Faker::Internet.email
   Authentication.create(
-    email: email,
     password_digest: Faker::Internet.password,
-    uid: email,
-    provider: 'email',
+    uid: Faker::Internet.email,
     user_id: User.all.ids[rand(User.count)]
   )
 end
