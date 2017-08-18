@@ -14,5 +14,5 @@
 #
 
 class User < ApplicationRecord
-  has_many :authentication
+  has_many :authentications
 end
