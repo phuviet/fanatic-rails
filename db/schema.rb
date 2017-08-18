@@ -10,24 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170818043019) do
+ActiveRecord::Schema.define(version: 20170818081034) do
+
+  create_table "authentications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "uid", default: "", null: false
+    t.string "provider", default: "email", null: false
+    t.string "password_digest"
+    t.string "access_token"
+    t.datetime "confirm_send_at"
+    t.string "confirm_token"
+    t.datetime "confirm_at"
+    t.string "remember_digest"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["uid", "provider"], name: "index_authentications_on_uid_and_provider", unique: true
+    t.index ["user_id"], name: "index_authentications_on_user_id"
+  end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "email"
-    t.string "password_digest"
     t.string "first_name"
     t.string "last_name"
-    t.string "uid"
-    t.string "provider"
     t.string "phone"
     t.integer "gender"
     t.integer "role"
     t.string "avatar"
-    t.datetime "confirm_send_at"
-    t.string "confirm_token"
-    t.datetime "confirm_at"
-    t.string "access_token"
-    t.string "remember_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

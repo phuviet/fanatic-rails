@@ -1,10 +1,11 @@
 class SessionController < ApplicationController
   def create
-    @user = User.find_by(email: params[:email], password_digest: params[:password])
+    @user = Authentication.find_by(uid: params[:uid], password_digest: params[:password])
 
     if @user
-      # response.headers['Name'] = 'Viet Nguyen P.'
-      render json: { user: @user }
+      binding.pry
+      @access_token = request.headers['Access-Token']
+      render json: { user: @user, access_token: @access_token }
     else
     end
   end
