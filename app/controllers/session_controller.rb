@@ -24,7 +24,7 @@ class SessionController < ApplicationController
     @auth = Authentication.find_by(provider: @provider, uid: @uid)
     if @auth
       @tokens = JSON.parse(@auth.access_token)['token']
-      if @tokens.select!{ |token| token == @access_token}
+      if @tokens.reject!{ |token| token == @access_token}
         @auth.update_attribute(:access_token, '{"token": ' + @tokens.to_s + '}')
       else
         render json: { error: 'Invalid access token!' }
