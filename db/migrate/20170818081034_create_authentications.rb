@@ -6,7 +6,7 @@ class CreateAuthentications < ActiveRecord::Migration[5.1]
       t.string :uid, null: false, default: ''
       t.string :provider, null: false, default: 'email'
       t.string :password_digest
-      t.string :access_token
+      t.text :access_token
       t.datetime :confirm_send_at
       t.string :confirm_token
       t.datetime :confirm_at
@@ -18,6 +18,7 @@ class CreateAuthentications < ActiveRecord::Migration[5.1]
     end
 
     # add_index :authentications, :email, unique: true
+    add_index :authentications, :uid, unique: true
     add_index :authentications, [:uid, :provider], unique: true
   end
 end

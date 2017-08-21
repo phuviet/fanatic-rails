@@ -8,7 +8,6 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.integer :role
       t.string :avatar
 
-
       # t.belongs_to :address
 
       t.timestamps

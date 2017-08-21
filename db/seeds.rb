@@ -13,7 +13,7 @@
     phone: '123456',
     gender: 1,
     role: 2,
-    avatar: Faker::Avatar.image,
+    avatar: Faker::Avatar.image
   )
 end
 
