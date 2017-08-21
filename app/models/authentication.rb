@@ -26,8 +26,5 @@ class Authentication < ApplicationRecord
     self.update_attribute(:access_token, '{"token": ' + tokens.to_s + '}')
   end
 
-  def self.response_headers(access_token, authSocial)
-    
-  end
 end
 
