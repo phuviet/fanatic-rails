@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20170818081034) do
     t.string "uid", default: "", null: false
     t.string "provider", default: "email", null: false
     t.string "password_digest"
-    t.string "access_token"
+    t.text "access_token"
     t.datetime "confirm_send_at"
     t.string "confirm_token"
     t.datetime "confirm_at"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20170818081034) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["uid", "provider"], name: "index_authentications_on_uid_and_provider", unique: true
+    t.index ["uid"], name: "index_authentications_on_uid", unique: true
     t.index ["user_id"], name: "index_authentications_on_user_id"
   end
 

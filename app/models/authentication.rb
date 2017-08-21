@@ -18,4 +18,13 @@
 
 class Authentication < ApplicationRecord
   belongs_to :user
+
+  def access(access_token)
+    tokens = JSON.parse(self.access_token)['token']
+    tokens.push(access_token)
+    tokens.shift() if tokens.length > 2
+    self.update_attribute(:access_token, '{"token":' + tokens.to_s + '}')
+  end
+
 end
+
