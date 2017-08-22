@@ -69,7 +69,6 @@ class Authentication < ApplicationRecord
     _auth = find_or_create_account_social(data)
     if _auth.id.present?
       _auth.sign_in_with_account_social(data.credentials.token)
-      binding.pry
     else
       ActiveRecord::Base.transaction do
         user = create_user_with_account_social(data)
