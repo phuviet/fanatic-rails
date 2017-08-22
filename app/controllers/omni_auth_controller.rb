@@ -1,19 +1,12 @@
 class OmniAuthController < ApplicationController
   def create
     authSocial = request.env['omniauth.auth']
-    auth = Authentication.find_by(uid: authSocial.uid, provider: authSocial.provider)
+    auth = Authentication.sign_in_with_account_social(authSocial)
     if auth
-      auth.access(authSocial.credentials.token)
+      response_headers(authSocial.credentials.token, authSocial.provider, authSocial.uid)
+      render json: auth.user, status: :success
     else
-      user = User.create()
-      newAuth = Authentication.create(
-        access_token: '{"token": []}',
-        user_id: user.id,
-        provider: authSocial.provider,
-        uid: authSocial.uid
-        )
-      newAuth.access(authSocial.credentials.token)
+      render json: { error: 'Invalid social account' }, status: :not_found
     end
-    Authentication.response_headers(authSocial.credentials.token, authSocial)
   end
 end

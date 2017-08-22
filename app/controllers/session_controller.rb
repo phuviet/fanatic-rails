@@ -1,36 +1,22 @@
 class SessionController < ApplicationController
   def create
     auth = Authentication.find_by(uid: params[:uid])
-    if auth
-      if auth.password_digest == params[:password]
-        access_token = SecureRandom.urlsafe_base64
-        auth.access(access_token)
-        response.headers['Access-Token'] = access_token
-        response.headers['Uid'] = auth.uid
-        response.headers['Provider'] = auth.provider
-        render json: auth, status: :created
-      else
-        render json: { error: 'Invalid password, please try again!' }, status: :not_found
-      end
+    if auth && auth.authenticate(params[:password])
+      auth.sign_in
+      response_headers(auth.access_token.last, auth.provider, auth.uid)
+      render json: auth, status: :created
     else
-      render json: { error: 'Invalid email!' }, status: :not_found
+      render json: { error: 'Invalid account!' }, status: :not_found
     end
   end
 
   def destroy
-    provider = request.headers['Provider']
-    uid = request.headers['Uid']
-    access_token = request.headers['Access-Token']
+    access_token, provider, uid = request_headers()
     auth = Authentication.find_by(provider: provider, uid: uid)
-    if auth
-      tokens = JSON.parse(auth.access_token)['token']
-      if tokens.reject!{ |token| token == access_token}
-        auth.update_attribute(:access_token, '{"token":' + tokens.to_s + '}')
-      else
-        render json: { error: 'Invalid access token!' }
-      end
+    if auth && auth.remove_token(access_token)
+      render json: { success: 'Successfully' }, status: 200
     else
-      render json: { error: 'Invalid user logout!' }
+      render json: { error: 'Unauthorize' }, status: 422
     end
   end
 end
