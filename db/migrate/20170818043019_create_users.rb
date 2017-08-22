@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :last_name
       t.string :phone
       t.integer :gender
-      t.integer :role
+      t.integer :role, default: 1
       t.string :avatar
 
       # t.belongs_to :address
