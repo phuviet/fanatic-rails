@@ -3,16 +3,6 @@ class CategoriesController < ApplicationController
 
   # GET /categories
   def index
-    # @categories = Category.root.descendants
-
-    # Category.roots.each do |cat|
-    #   cat.children.each do |childCat|
-    #     binding.pry
-    #     cat[childCat.title] = childCat.children
-    #   end
-    #   @categories[cat.title] = cat.children
-    # end
-    # binding.pry
     @categories = Hash.new
     Category.roots.each do |cat|
       @cat = Hash.new
