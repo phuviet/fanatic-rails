@@ -1,20 +1,18 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: orders
 #
 #  id         :integer          not null, primary key
-#  name       :string(255)
-#  phone      :string(255)
-#  gender     :integer
-#  role       :integer          default(1)
-#  avatar     :string(255)
+#  quantity   :string(255)
+#  cart_id    :integer
+#  product_id :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 require 'test_helper'
 
-class UserTest < ActiveSupport::TestCase
+class OrderTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
