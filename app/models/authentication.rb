@@ -20,11 +20,7 @@ class Authentication < ApplicationRecord
   has_secure_password
   belongs_to :user
 
-  # def self.check_token(access_token, provider, uid)
-  #   auth = Authentication.find_by(provider: provider, uid: uid)
-  #   tokens = auth.access_token
-  #   tokens.include?(access_token)
-  # end
+  
 
   def sign_in
     update(access_token: add_token)

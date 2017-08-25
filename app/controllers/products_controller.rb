@@ -4,8 +4,15 @@ class ProductsController < ApplicationController
   # GET /products
   def index
     # binding.pry
-    @products = Category.find(params[:id]).products
-
+    # page_number = (User.all.count.to_f / 10).ceil
+    params[:page] = params[:page].to_i > 0 ? params[:page].to_i : 1
+    if params[:id]
+      count = Category.find(params[:id]).products
+      @products = Category.find(params[:id]).products.offset((params[:page] - 1) * 8)
+    else
+      count = Product.all
+      @products = Product.all.limit(10).offset((params[:page] - 1) * 8)
+    end
     render json: { products: @products }
   end
 
