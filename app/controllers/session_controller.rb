@@ -11,7 +11,7 @@ class SessionController < ApplicationController
   end
 
   def destroy
-    access_token, provider, uid = request_headers()
+    access_token, provider, uid = request_headers
     auth = Authentication.find_by(provider: provider, uid: uid)
     if auth && auth.remove_token(access_token)
       render json: { success: 'Successfully' }, status: 200

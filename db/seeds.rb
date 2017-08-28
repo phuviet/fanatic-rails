@@ -144,7 +144,7 @@ i = 24
     # price: 500000,
     rating: rand(1..5),
     number_review: rand(1..100),
-    category_id: rand(7..28),
+    category_id: ([*7..28] - [10, 21]).sample,
     brand_id: rand(1..5)
   )
 end
