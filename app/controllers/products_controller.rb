@@ -3,8 +3,6 @@ class ProductsController < ApplicationController
 
   # GET /products
   def index
-    # binding.pry
-    # page_number = (User.all.count.to_f / 10).ceil
     params[:page] = params[:page].to_i > 0 ? params[:page].to_i : 1
     @count = Product.where(category_id: params[:category_id], brand_id: params[:brand_id] ? params[:brand_id] : Brand.select(:id).where(category_id: params[:category_id])).count
     @products = Product.where(category_id: params[:category_id], brand_id: params[:brand_id] ? params[:brand_id] : Brand.select(:id).where(category_id: params[:category_id])).limit(8).offset((params[:page] - 1) * 8)
