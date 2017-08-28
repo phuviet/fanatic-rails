@@ -8,21 +8,15 @@ class CommentsController < ApplicationController
     render json: @comments
   end
 
-  # GET /comments/1
-  def show
-    render json: @comment
-  end
-
   # POST /comments
   def create
     # @comment = Comment.new(comment_params)
-    access_token, provider, uid = request_headers
     if authorize_user
-      comment = Comment.create(
+      comment = Comment.comment_includes.create(
         content: params[:content],
         user_id: current_user.id,
         product_id: params[:product_id]
-      )
+        )
       render json: comment, status: :created
     else
       render json: { error: 'Unauthorize' }, status: :not_found
@@ -31,26 +25,35 @@ class CommentsController < ApplicationController
 
   # PATCH/PUT /comments/1
   def update
-    if @comment.update(comment_params)
-      render json: @comment
+    if authorize_user && @comment.user.id == current_user.id
+      if @comment.update(comment_params)
+        # binding.pry
+        render json: @comment
+      else
+        render json: @comment.errors, status: :unprocessable_entity
+      end
     else
-      render json: @comment.errors, status: :unprocessable_entity
+      render json: { error: 'Unauthorize' }
     end
   end
 
   # DELETE /comments/1
   def destroy
-    @comment.destroy
+    if authorize_user && @comment.user.id == current_user.id
+      @comment.destroy
+    else
+      render json: { error: 'Unauthorize' }
+    end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
-      @comment = Comment.find(params[:id])
+      @comment = Comment.comment_includes.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def comment_params
       params.require(:comment).permit(:content)
     end
-end
+  end

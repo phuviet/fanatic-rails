@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :brands
   resources :comments
   resources :orders
   resources :categories
@@ -6,6 +7,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users
   resources :session
+  resources :rating, only: [:update]
   resources :omni_auth, only: [:create]
   # match '/auth/:provider/callback', to: 'omni_auth#create', via: [:get, :post]
   # match 'auth/failure', to: redirect('/'), via: [:get, :post]

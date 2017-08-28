@@ -4,10 +4,11 @@ class CreateProducts < ActiveRecord::Migration[5.1]
       t.string :name
       t.text :description
       t.string :image
-      t.integer :rating
+      t.float :rating
+      t.integer :number_review
 
       t.belongs_to :category
-      # t.belongs_to :admin
+      t.belongs_to :brand
 
       t.timestamps
     end

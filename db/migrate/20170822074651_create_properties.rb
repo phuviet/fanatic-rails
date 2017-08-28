@@ -4,7 +4,6 @@ class CreateProperties < ActiveRecord::Migration[5.1]
       t.string :color
       t.string :size
       t.integer :storage
-      t.string :branch
       t.integer :price
 
       t.belongs_to :product

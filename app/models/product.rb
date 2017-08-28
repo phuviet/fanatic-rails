@@ -15,8 +15,8 @@
 
 class Product < ApplicationRecord
   belongs_to :category
+  belongs_to :brand
   has_many :properties
-  has_many :orders
   has_many :comments
 
   scope :includes_properties, -> {

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170825010652) do
+ActiveRecord::Schema.define(version: 20170825092116) do
 
   create_table "authentications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "uid", default: "", null: false
@@ -27,6 +27,14 @@ ActiveRecord::Schema.define(version: 20170825010652) do
     t.index ["uid", "provider"], name: "index_authentications_on_uid_and_provider", unique: true
     t.index ["uid"], name: "index_authentications_on_uid", unique: true
     t.index ["user_id"], name: "index_authentications_on_user_id"
+  end
+
+  create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "branch"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_brands_on_category_id"
   end
 
   create_table "carts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -62,24 +70,17 @@ ActiveRecord::Schema.define(version: 20170825010652) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "quantity"
-    t.bigint "cart_id"
-    t.bigint "product_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["cart_id"], name: "index_orders_on_cart_id"
-    t.index ["product_id"], name: "index_orders_on_product_id"
-  end
-
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.text "description"
     t.string "image"
-    t.integer "rating"
+    t.float "rating", limit: 24
+    t.integer "number_review"
     t.bigint "category_id"
+    t.bigint "brand_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
@@ -87,7 +88,6 @@ ActiveRecord::Schema.define(version: 20170825010652) do
     t.string "color"
     t.string "size"
     t.integer "storage"
-    t.string "branch"
     t.integer "price"
     t.bigint "product_id"
     t.datetime "created_at", null: false

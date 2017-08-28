@@ -20,8 +20,6 @@ class Authentication < ApplicationRecord
   has_secure_password
   belongs_to :user
 
-  
-
   def sign_in
     update(access_token: add_token)
   end
