@@ -13,7 +13,7 @@
 #
 
 class User < ApplicationRecord
-  has_many :cart
+  has_many :carts
   has_many :authentications
   has_many :comments
 end

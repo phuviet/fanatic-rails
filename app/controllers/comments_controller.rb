@@ -1,33 +1,28 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :update, :destroy]
+  before_action :perform_authorization, only: [:show, :create, :update]
 
   # GET /comments
   def index
-    @comments = Comment.all
+    @comments = Comment.where(product_id: params[:id])
 
     render json: @comments
   end
 
   # POST /comments
   def create
-    # @comment = Comment.new(comment_params)
-    if authorize_user
-      comment = Comment.comment_includes.create(
-        content: params[:content],
-        user_id: current_user.id,
-        product_id: params[:product_id]
-        )
-      render json: comment, status: :created
-    else
-      render json: { error: 'Unauthorize' }, status: :not_found
-    end
+    comment = Comment.create(
+      content: params[:content],
+      user_id: current_user.id,
+      product_id: params[:product_id]
+    )
+    render json: comment, status: :created
   end
 
   # PATCH/PUT /comments/1
   def update
-    if authorize_user && @comment.user.id == current_user.id
+    if @comment.user.id == current_user.id
       if @comment.update(comment_params)
-        # binding.pry
         render json: @comment
       else
         render json: @comment.errors, status: :unprocessable_entity
@@ -39,7 +34,7 @@ class CommentsController < ApplicationController
 
   # DELETE /comments/1
   def destroy
-    if authorize_user && @comment.user.id == current_user.id
+    if @comment.user.id == current_user.id
       @comment.destroy
     else
       render json: { error: 'Unauthorize' }
@@ -49,7 +44,7 @@ class CommentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
-      @comment = Comment.comment_includes.find(params[:id])
+      @comment = Comment.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

@@ -1,27 +1,19 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :update, :destroy]
+  before_action :set_product, only: [:show]
 
   # GET /products
   def index
     # binding.pry
     # page_number = (User.all.count.to_f / 10).ceil
-    if authorize_user
-      params[:page] = params[:page].to_i > 0 ? params[:page].to_i : 1
-      @count = Product.where(category_id: params[:category_id], brand_id: params[:brand_id] ? params[:brand_id] : Brand.select(:id).where(category_id: params[:category_id])).count
-      @products = Product.where(category_id: params[:category_id], brand_id: params[:brand_id] ? params[:brand_id] : Brand.select(:id).where(category_id: params[:category_id])).limit(8).offset((params[:page] - 1) * 8)
-      render json: { products: @products, count: @count }
-    else
-      render json: { error: 'Unauthorize' }
-    end
+    params[:page] = params[:page].to_i > 0 ? params[:page].to_i : 1
+    @count = Product.where(category_id: params[:category_id], brand_id: params[:brand_id] ? params[:brand_id] : Brand.select(:id).where(category_id: params[:category_id])).count
+    @products = Product.where(category_id: params[:category_id], brand_id: params[:brand_id] ? params[:brand_id] : Brand.select(:id).where(category_id: params[:category_id])).limit(8).offset((params[:page] - 1) * 8)
+    render json: { products: @products, count: @count }
   end
 
   # GET /products/1
   def show
-    if authorize_user
       render json: @product
-    else
-      render json: { error: 'Unauthorize' }
-    end
   end
 
   private
