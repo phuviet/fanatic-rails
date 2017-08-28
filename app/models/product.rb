@@ -17,8 +17,6 @@ class Product < ApplicationRecord
   belongs_to :brand
   has_many :properties
   has_many :comments
-
-  scope :includes_properties, -> {
-    includes(:properties)
-  }
+  has_many :order_items
+  has_many :orders, through: :order_items
   end
