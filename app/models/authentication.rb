@@ -3,10 +3,10 @@
 # Table name: authentications
 #
 #  id              :integer          not null, primary key
-#  email           :string(255)
+#  uid             :string(255)      default(""), not null
+#  provider        :string(255)      default("email"), not null
 #  password_digest :string(255)
-#  uid             :string(255)
-#  provider        :string(255)
+#  access_token    :text(65535)
 #  confirm_send_at :datetime
 #  confirm_token   :string(255)
 #  confirm_at      :datetime
@@ -54,29 +54,29 @@ class Authentication < ApplicationRecord
 
   # Sign in with facebook
 
-  def self.find_or_create_account_social(data)
-    Authentication.find_or_initialize_by(provider: data.provider, uid: data.uid)
+  def self.find_or_create_account_social(provider, uid)
+    Authentication.find_or_initialize_by(provider: provider, uid: uid)
   end
 
-  def self.create_user_with_account_social(data)
+  def self.create_user_with_account_social(authSocial, avatar)
     User.create(
-      avatar: data.info.image
-      # name: data.info.name
+      avatar: avatar,
+      name: authSocial['name']
     )
   end
 
-  def self.sign_in_with_account_social(data)
-    _auth = find_or_create_account_social(data)
+  def self.sign_in_with_account_social(access_token, provider, uid, authSocial, avatar)
+    _auth = find_or_create_account_social(provider, uid)
     if _auth.id.present?
-      _auth.sign_in_with_account_social(data.credentials.token)
+      _auth.sign_in_with_account_social(access_token)
     else
       ActiveRecord::Base.transaction do
-        user = create_user_with_account_social(data)
+        user = create_user_with_account_social(authSocial, avatar)
         _auth.update(
-          access_token: [data.credentials.token],
+          access_token: [access_token],
           user_id: user.id,
-          provider: data.provider,
-          uid: data.uid,
+          provider: provider,
+          uid: uid,
           password: 'no password'
         )
       end

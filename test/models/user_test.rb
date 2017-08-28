@@ -3,11 +3,10 @@
 # Table name: users
 #
 #  id         :integer          not null, primary key
-#  first_name :string(255)
-#  last_name  :string(255)
+#  name       :string(255)
 #  phone      :string(255)
 #  gender     :integer
-#  role       :integer
+#  role       :integer          default(1)
 #  avatar     :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
