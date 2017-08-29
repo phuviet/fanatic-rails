@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  resources :order_items, only: [:create]
-  resources :brands
+  resources :brands, only: [:index]
   resources :comments
-  resources :orders, only: [:index]
-  resources :categories
-  resources :products
+  resources :orders, only: [:create]
+  resources :categories, only: [:index]
+  resources :products, only: [:index, :show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users
   resources :session, only: [:create, :destroy]
