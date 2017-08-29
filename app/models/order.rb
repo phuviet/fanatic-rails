@@ -14,5 +14,5 @@ class Order < ApplicationRecord
   has_many :products, through: :order_items
   belongs_to :user
 
-  enum status: %w[Delivering Delivered]
+  enum status: %w[Pending Delivering Delivered]
 end

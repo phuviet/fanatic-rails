@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   # POST /orders
   def create
     order = JSON.parse(params[:orders])
-    orders = current_user.orders.create(status: 'Delivered')
+    orders = current_user.orders.create
     order.each do |ord|
       orders.order_items.create(
         quantity: ord["quantity"],
