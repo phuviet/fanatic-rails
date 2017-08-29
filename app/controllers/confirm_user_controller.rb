@@ -1,6 +1,6 @@
 class ConfirmUserController < ApplicationController
-	def create
-		if params[:confirm_token].blank?
+  def create
+    if params[:confirm_token].blank?
       return render json: { error: 'Email not present' }
     end
     token = params[:confirm_token].to_s
@@ -11,5 +11,5 @@ class ConfirmUserController < ApplicationController
       return render json: { status: 'ok' }, status: :ok
     end
     return render json: { error: 'No email ' }
-	end
+  end
 end
