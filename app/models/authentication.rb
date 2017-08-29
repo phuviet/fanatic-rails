@@ -39,6 +39,19 @@ class Authentication < ApplicationRecord
     SecureRandom.urlsafe_base64
   end
 
+  def generate_confirm_token
+    self.update_attributes(confirm_token: generate_access_token, confirm_send_at: Time.now.utc)
+  end
+
+  def confirm_token_valid?
+    (self.confirm_send_at + 10.minutes) > Time.now.utc
+  end
+
+  def validated_email
+    self.confirm_token = nil
+    self.confirm_at = Time.now.utc
+  end
+
   def access_token
     JSON.parse(self[:access_token])["tokens"]
   end
