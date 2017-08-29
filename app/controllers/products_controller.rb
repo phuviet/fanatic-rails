@@ -4,9 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   def index
     params[:page] = params[:page].to_i > 0 ? params[:page].to_i : 1
-    # @count = Product.where(category_id: params[:category_id], brand_id: params[:brand_id] ? params[:brand_id] : Brand.select(:id).where(category_id: params[:category_id])).count
     @count = Category.find_by(title: params[:title]).products.where(brand_id: params[:brand_id] ? params[:brand_id] : Brand.select(:id).where(category_id: Category.find_by(title: params[:title]).id)).count
-    # @products = Product.where(category_id: params[:category_id], brand_id: params[:brand_id] ? params[:brand_id] : Brand.select(:id).where(category_id: params[:category_id])).limit(8).offset((params[:page] - 1) * 8)
     @products = Category.find_by(title: params[:title]).products.where(brand_id: params[:brand_id] ? params[:brand_id] : Brand.select(:id).where(category_id: Category.find_by(title: params[:title]).id)).limit(8).offset((params[:page] - 1) * 8)
     render json: { products: @products, count: @count }
   end

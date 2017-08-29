@@ -3,27 +3,15 @@ class OrderItemsController < ApplicationController
 
   # POST /order_items
   def create
-    order = JSON.parse(params[:viet])
+    order = JSON.parse(params[:orders])
     orders = current_user.orders.create
     order.each do |ord|
       orders.order_items.create(
         quantity: ord["quantity"],
-        product_id: ord["id"]
+        total: ord["quantity"] * Property.find(ord["property"]).price,
+        property_id: ord["property"]
       )
-      # OrderItem.create(
-      #   quantity: ord["quantity"],
-      #   product_id: ord["id"],
-      #   order_id: orders.id
-      # )
     end
-    # binding.pry
     render json: orders.order_items
-    # @order_item = OrderItem.new(order_item_params)
-
-    # if @order_item.save
-    #   render json: @order_item, status: :created, location: @order_item
-    # else
-    #   render json: @order_item.errors, status: :unprocessable_entity
-    # end
   end
 end

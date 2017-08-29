@@ -65,6 +65,12 @@ console = Category.create(title: "Console")
 ps4 = Category.create(title: "PS4")
 ps4.move_to_child_of(console)
 
+ram = Category.create(title: "RAM")
+vega = Category.create(title: "Vega")
+
+ram.move_to_child_of(pc)
+vega.move_to_child_of(pc)
+
 lap.move_to_child_of(computer)
 pc.move_to_child_of(computer)
 console.move_to_child_of(computer)
@@ -101,8 +107,8 @@ Brand.create(branch: "Apple", category_id: 10)
 Brand.create(branch: "SamSung", category_id: 10)
 Brand.create(branch: "Nokia", category_id: 10)
 
-Brand.create(branch: "LG", category_id: 21)
-Brand.create(branch: "Sony", category_id: 21)
+Brand.create(branch: "LG", category_id: 23)
+Brand.create(branch: "Sony", category_id: 23)
 
 i = 0
 10.times do
@@ -129,7 +135,7 @@ i = 10
     # price: 500000,
     rating: rand(1..5),
     number_review: rand(1..100),
-    category_id: 21,
+    category_id: 23,
     brand_id: rand(4..5)
   )
 end
@@ -144,7 +150,7 @@ i = 24
     # price: 500000,
     rating: rand(1..5),
     number_review: rand(1..100),
-    category_id: ([*7..28] - [10, 21]).sample,
+    category_id: ([*7..28] - [10, 23]).sample,
     brand_id: rand(1..5)
   )
 end

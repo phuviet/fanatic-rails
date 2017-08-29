@@ -26,21 +26,20 @@ class Category < ApplicationRecord
       cat_menu = Hash.new
       cat.children.each do |childCat|
 
-        cat_leaf = Hash.new
         cat_leaf_at = Hash.new
+        child = childCat.children.to_a
+        childC = child.to_a
         childCat.children.each_with_index do |cCat, index|
           if cCat.descendants != []
+            cat_leaf = Hash.new
             cat_leaf[cCat.title] = cCat.children
-            child = childCat.children.to_a
-            child.delete_at(index)
-            child[index] = cat_leaf
-            cat_leaf_at = child
+            childC.delete_at(index)
+            childC[index] = cat_leaf
           else
-            cat_leaf_at = childCat.children
+            childC[index] = cCat
           end
         end
-
-        cat_menu[childCat.title] = cat_leaf_at
+        cat_menu[childCat.title] = childC
       end
       categories[cat.title] = cat_menu
     end
