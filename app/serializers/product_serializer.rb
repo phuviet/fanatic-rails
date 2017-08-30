@@ -5,16 +5,18 @@
 #  id            :integer          not null, primary key
 #  name          :string(255)
 #  description   :text(65535)
-#  image         :string(255)
 #  rating        :float(24)
 #  number_review :integer
 #  category_id   :integer
 #  brand_id      :integer
+#  shop_id       :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
 
 class ProductSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :image, :rating, :number_review
+  attributes :id, :name, :description, :rating, :number_review
+  has_one :shop
   has_many :properties
+  # has_one :brand
 end

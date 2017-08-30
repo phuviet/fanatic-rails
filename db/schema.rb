@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170828072534) do
+ActiveRecord::Schema.define(version: 20170830072810) do
 
   create_table "authentications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "uid", default: "", null: false
@@ -61,6 +61,14 @@ ActiveRecord::Schema.define(version: 20170828072534) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "image"
+    t.bigint "property_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["property_id"], name: "index_images_on_property_id"
+  end
+
   create_table "order_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "quantity"
     t.integer "total"
@@ -83,15 +91,16 @@ ActiveRecord::Schema.define(version: 20170828072534) do
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.text "description"
-    t.string "image"
     t.float "rating", limit: 24
     t.integer "number_review"
     t.bigint "category_id"
     t.bigint "brand_id"
+    t.bigint "shop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["shop_id"], name: "index_products_on_shop_id"
   end
 
   create_table "properties", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -105,9 +114,18 @@ ActiveRecord::Schema.define(version: 20170828072534) do
     t.index ["product_id"], name: "index_properties_on_product_id"
   end
 
+  create_table "shops", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "image"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "phone"
+    t.string "address"
     t.integer "gender"
     t.integer "role", default: 1
     t.string "avatar"

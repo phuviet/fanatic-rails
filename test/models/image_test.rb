@@ -1,19 +1,17 @@
 # == Schema Information
 #
-# Table name: order_items
+# Table name: images
 #
 #  id          :integer          not null, primary key
-#  quantity    :integer
-#  total       :integer
+#  image       :string(255)
 #  property_id :integer
-#  order_id    :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 
 require 'test_helper'
 
-class OrderItemTest < ActiveSupport::TestCase
+class ImageTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

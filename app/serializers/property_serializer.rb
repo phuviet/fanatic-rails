@@ -14,4 +14,5 @@
 
 class PropertySerializer < ActiveModel::Serializer
   attributes :id, :color, :size, :storage, :price
+  has_many :images
 end

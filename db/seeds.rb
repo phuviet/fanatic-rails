@@ -8,10 +8,11 @@
 10.times do
   User.create(
     name: Faker::Name.name,
-    phone: '123456',
+    phone: Faker::PhoneNumber.phone_number,
     gender: 1,
     role: 2,
-    avatar: Faker::Avatar.image
+    avatar: Faker::Avatar.image,
+    address: 'Sơn Trà, Đà Nẵng'
     )
 end
 
@@ -106,77 +107,525 @@ childwear.move_to_child_of(child)
 Brand.create(branch: "Apple", category_id: 10)
 Brand.create(branch: "SamSung", category_id: 10)
 Brand.create(branch: "Nokia", category_id: 10)
+Brand.create(branch: "LG", category_id: 10)
+Brand.create(branch: "Sony", category_id: 10)
 
-Brand.create(branch: "LG", category_id: 23)
-Brand.create(branch: "Sony", category_id: 23)
+
+5.times do
+  Brand.create(
+    branch: "Apple",
+    category_id: 11
+  )
+end
+
+5.times do
+  Brand.create(
+    branch: "Apple",
+    category_id: 12
+  )
+end
+
+5.times do
+  Brand.create(
+    branch: "Apple",
+    category_id: 13
+  )
+end
+
+5.times do
+  Brand.create(
+    branch: "Apple",
+    category_id: 14
+  )
+end
+
+5.times do
+  Brand.create(
+    branch: "Apple",
+    category_id: 15
+  )
+end
+
+5.times do
+  Brand.create(
+    branch: "Apple",
+    category_id: 16
+  )
+end
+
+5.times do
+  Brand.create(
+    branch: "Apple",
+    category_id: 17
+  )
+end
+
+5.times do
+  Brand.create(
+    branch: "Apple",
+    category_id: 18
+  )
+end
+
+5.times do
+  Brand.create(
+    branch: "Apple",
+    category_id: 19
+  )
+end
+
+5.times do
+  Brand.create(
+    branch: "Apple",
+    category_id: 20
+  )
+end
+
+5.times do
+  Brand.create(
+    branch: "Apple",
+    category_id: 21
+  )
+end
+
+5.times do
+  Brand.create(
+    branch: "Apple",
+    category_id: 22
+  )
+end
+
+5.times do
+  Brand.create(
+    branch: "Apple",
+    category_id: 23
+  )
+end
+
+5.times do
+  Brand.create(
+    branch: "Apple",
+    category_id: 24
+  )
+end
+
+5.times do
+  Brand.create(
+    branch: "Apple",
+    category_id: 25
+  )
+end
+
+5.times do
+  Brand.create(
+    branch: "Apple",
+    category_id: 26
+  )
+end
+
+5.times do
+  Brand.create(
+    branch: "Apple",
+    category_id: 27
+  )
+end
+
+5.times do
+  Brand.create(
+    branch: "Apple",
+    category_id: 28
+  )
+end
+
+5.times do
+  Brand.create(
+    branch: "Apple",
+    category_id: 29
+  )
+end
+
+5.times do
+  Brand.create(
+    branch: "Apple",
+    category_id: 30
+  )
+end
+
+Shop.create(
+  name: 'Shop A',
+  image: '',
+  address: 'Sơn Trà, Đà Nẵng'
+)
+
+Shop.create(
+  name: 'Shop B',
+  image: '',
+  address: 'Sơn Trà, Đà Nẵng'
+)
 
 i = 0
 10.times do
   i = i + 1
   Product.create(
-    name: "Product #{i}",
-    description: "Description #{i}",
-    image: 'https://www.2checkout.com/upload/images/graphic_product_tangible.png',
+    name: Faker::Movie.quote,
+    description: Faker::Lorem.paragraph,
+    # image: 'https://www.2checkout.com/upload/images/graphic_product_tangible.png',
     # price: 500000,
     rating: rand(1..5),
     number_review: rand(1..100),
     category_id: 10,
-    brand_id: rand(1..3)
+    brand_id: rand(1..5),
+    shop_id: rand(1..2)
   )
 end
 
 i = 10
-15.times do
+10.times do
   i = i + 1
   Product.create(
-    name: "Product #{i}",
-    description: "Description #{i}",
-    image: 'https://www.2checkout.com/upload/images/graphic_product_tangible.png',
+    name: Faker::Movie.quote,
+    description: Faker::Lorem.paragraph,
+    # image: 'https://www.2checkout.com/upload/images/graphic_product_tangible.png',
+    # price: 500000,
+    rating: rand(1..5),
+    number_review: rand(1..100),
+    category_id: 11,
+    brand_id: rand(6..10),
+    shop_id: rand(1..2)
+  )
+end
+
+i = 20
+10.times do
+  i = i + 1
+  Product.create(
+    name: Faker::Movie.quote,
+    description: Faker::Lorem.paragraph,
+    # image: 'https://www.2checkout.com/upload/images/graphic_product_tangible.png',
+    # price: 500000,
+    rating: rand(1..5),
+    number_review: rand(1..100),
+    category_id: 12,
+    brand_id: rand(11..15),
+    shop_id: rand(1..2)
+  )
+end
+
+i = 30
+10.times do
+  i = i + 1
+  Product.create(
+    name: Faker::Movie.quote,
+    description: Faker::Lorem.paragraph,
+    # image: 'https://www.2checkout.com/upload/images/graphic_product_tangible.png',
+    # price: 500000,
+    rating: rand(1..5),
+    number_review: rand(1..100),
+    category_id: 13,
+    brand_id: rand(16..20),
+    shop_id: rand(1..2)
+  )
+end
+
+i = 40
+10.times do
+  i = i + 1
+  Product.create(
+    name: Faker::Movie.quote,
+    description: Faker::Lorem.paragraph,
+    # image: 'https://www.2checkout.com/upload/images/graphic_product_tangible.png',
+    # price: 500000,
+    rating: rand(1..5),
+    number_review: rand(1..100),
+    category_id: 14,
+    brand_id: rand(21..25),
+    shop_id: rand(1..2)
+  )
+end
+
+i = 50
+10.times do
+  i = i + 1
+  Product.create(
+    name: Faker::Movie.quote,
+    description: Faker::Lorem.paragraph,
+    # image: 'https://www.2checkout.com/upload/images/graphic_product_tangible.png',
+    # price: 500000,
+    rating: rand(1..5),
+    number_review: rand(1..100),
+    category_id: 15,
+    brand_id: rand(26..30),
+    shop_id: rand(1..2)
+  )
+end
+
+i = 60
+10.times do
+  i = i + 1
+  Product.create(
+    name: Faker::Movie.quote,
+    description: Faker::Lorem.paragraph,
+    # image: 'https://www.2checkout.com/upload/images/graphic_product_tangible.png',
+    # price: 500000,
+    rating: rand(1..5),
+    number_review: rand(1..100),
+    category_id: 16,
+    brand_id: rand(31..35),
+    shop_id: rand(1..2)
+  )
+end
+
+i = 70
+10.times do
+  i = i + 1
+  Product.create(
+    name: Faker::Movie.quote,
+    description: Faker::Lorem.paragraph,
+    # image: 'https://www.2checkout.com/upload/images/graphic_product_tangible.png',
+    # price: 500000,
+    rating: rand(1..5),
+    number_review: rand(1..100),
+    category_id: 17,
+    brand_id: rand(36..40),
+    shop_id: rand(1..2)
+  )
+end
+
+i = 80
+10.times do
+  i = i + 1
+  Product.create(
+    name: Faker::Movie.quote,
+    description: Faker::Lorem.paragraph,
+    # image: 'https://www.2checkout.com/upload/images/graphic_product_tangible.png',
+    # price: 500000,
+    rating: rand(1..5),
+    number_review: rand(1..100),
+    category_id: 18,
+    brand_id: rand(41..45),
+    shop_id: rand(1..2)
+  )
+end
+
+i = 90
+10.times do
+  i = i + 1
+  Product.create(
+    name: Faker::Movie.quote,
+    description: Faker::Lorem.paragraph,
+    # image: 'https://www.2checkout.com/upload/images/graphic_product_tangible.png',
+    # price: 500000,
+    rating: rand(1..5),
+    number_review: rand(1..100),
+    category_id: 19,
+    brand_id: rand(46..50),
+    shop_id: rand(1..2)
+  )
+end
+
+i = 100
+10.times do
+  i = i + 1
+  Product.create(
+    name: Faker::Movie.quote,
+    description: Faker::Lorem.paragraph,
+    # image: 'https://www.2checkout.com/upload/images/graphic_product_tangible.png',
+    # price: 500000,
+    rating: rand(1..5),
+    number_review: rand(1..100),
+    category_id: 20,
+    brand_id: rand(51..55),
+    shop_id: rand(1..2)
+  )
+end
+
+i = 110
+10.times do
+  i = i + 1
+  Product.create(
+    name: Faker::Movie.quote,
+    description: Faker::Lorem.paragraph,
+    # image: 'https://www.2checkout.com/upload/images/graphic_product_tangible.png',
+    # price: 500000,
+    rating: rand(1..5),
+    number_review: rand(1..100),
+    category_id: 21,
+    brand_id: rand(56..60),
+    shop_id: rand(1..2)
+  )
+end
+
+i = 120
+10.times do
+  i = i + 1
+  Product.create(
+    name: Faker::Movie.quote,
+    description: Faker::Lorem.paragraph,
+    # image: 'https://www.2checkout.com/upload/images/graphic_product_tangible.png',
+    # price: 500000,
+    rating: rand(1..5),
+    number_review: rand(1..100),
+    category_id: 22,
+    brand_id: rand(61..65),
+    shop_id: rand(1..2)
+  )
+end
+
+i = 130
+10.times do
+  i = i + 1
+  Product.create(
+    name: Faker::Movie.quote,
+    description: Faker::Lorem.paragraph,
+    # image: 'https://www.2checkout.com/upload/images/graphic_product_tangible.png',
     # price: 500000,
     rating: rand(1..5),
     number_review: rand(1..100),
     category_id: 23,
-    brand_id: rand(4..5)
+    brand_id: rand(66..70),
+    shop_id: rand(1..2)
   )
 end
 
-i = 24
-55.times do
+i = 140
+10.times do
   i = i + 1
   Product.create(
-    name: "Product #{i}",
-    description: "Description #{i}",
-    image: 'https://www.2checkout.com/upload/images/graphic_product_tangible.png',
+    name: Faker::Movie.quote,
+    description: Faker::Lorem.paragraph,
+    # image: 'https://www.2checkout.com/upload/images/graphic_product_tangible.png',
     # price: 500000,
     rating: rand(1..5),
     number_review: rand(1..100),
-    category_id: ([*7..28] - [10, 23]).sample,
-    brand_id: rand(1..5)
+    category_id: 24,
+    brand_id: rand(71..75),
+    shop_id: rand(1..2)
   )
 end
 
-# 10.times do
-#   Cart.create(
-#     user_id: User.all.ids[rand(User.count)],
-#     status: 'Committed',
-#   )
-# end
+i = 150
+10.times do
+  i = i + 1
+  Product.create(
+    name: Faker::Movie.quote,
+    description: Faker::Lorem.paragraph,
+    # image: 'https://www.2checkout.com/upload/images/graphic_product_tangible.png',
+    # price: 500000,
+    rating: rand(1..5),
+    number_review: rand(1..100),
+    category_id: 25,
+    brand_id: rand(76..80),
+    shop_id: rand(1..2)
+  )
+end
 
-Property.create(
-  color: 'Black',
-  storage: 32,
-  price: 6400000,
-  product_id:3
-)
-Property.create(
-  color: 'White',
-  storage: 64,
-  price: 8200000,
-  product_id:3
-)
-Property.create(
-  color: 'Black',
-  storage: 128,
-  price: 10200000,
-  product_id:3 
-)
+i = 160
+10.times do
+  i = i + 1
+  Product.create(
+    name: Faker::Movie.quote,
+    description: Faker::Lorem.paragraph,
+    # image: 'https://www.2checkout.com/upload/images/graphic_product_tangible.png',
+    # price: 500000,
+    rating: rand(1..5),
+    number_review: rand(1..100),
+    category_id: 26,
+    brand_id: rand(81..85),
+    shop_id: rand(1..2)
+  )
+end
+
+i = 170
+10.times do
+  i = i + 1
+  Product.create(
+    name: Faker::Movie.quote,
+    description: Faker::Lorem.paragraph,
+    # image: 'https://www.2checkout.com/upload/images/graphic_product_tangible.png',
+    # price: 500000,
+    rating: rand(1..5),
+    number_review: rand(1..100),
+    category_id: 27,
+    brand_id: rand(86..90),
+    shop_id: rand(1..2)
+  )
+end
+
+i = 180
+10.times do
+  i = i + 1
+  Product.create(
+    name: Faker::Movie.quote,
+    description: Faker::Lorem.paragraph,
+    # image: 'https://www.2checkout.com/upload/images/graphic_product_tangible.png',
+    # price: 500000,
+    rating: rand(1..5),
+    number_review: rand(1..100),
+    category_id: 28,
+    brand_id: rand(91..95),
+    shop_id: rand(1..2)
+  )
+end
+
+i = 190
+10.times do
+  i = i + 1
+  Product.create(
+    name: Faker::Movie.quote,
+    description: Faker::Lorem.paragraph,
+    # image: 'https://www.2checkout.com/upload/images/graphic_product_tangible.png',
+    # price: 500000,
+    rating: rand(1..5),
+    number_review: rand(1..100),
+    category_id: 29,
+    brand_id: rand(96..100),
+    shop_id: rand(1..2)
+  )
+end
+
+i = 200
+10.times do
+  i = i + 1
+  Product.create(
+    name: Faker::Movie.quote,
+    description: Faker::Lorem.paragraph,
+    # image: 'https://www.2checkout.com/upload/images/graphic_product_tangible.png',
+    # price: 500000,
+    rating: rand(1..5),
+    number_review: rand(1..100),
+    category_id: 30,
+    brand_id: rand(101..105),
+    shop_id: rand(1..2)
+  )
+end
+
+j = 0
+100.times do
+  j = j + 1
+  Property.create(
+    color: 'Black',
+    storage: 64,
+    price: 50,
+    product_id: j
+  )
+end
+
+j = 100
+100.times do
+  j = j + 1
+  Property.create(
+    color: 'White',
+    storage: 128,
+    price: 100,
+    product_id: j
+  )
+end
+
+k = 0
+200.times do
+  k = k + 1
+  Image.create(
+    image: Faker::LoremPixel.image,
+    property_id: k
+  )
+end

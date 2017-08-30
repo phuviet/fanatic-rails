@@ -1,14 +1,15 @@
 # == Schema Information
 #
-# Table name: orders
+# Table name: shops
 #
 #  id         :integer          not null, primary key
-#  status     :integer          default("Pending")
-#  user_id    :integer
+#  name       :string(255)
+#  image      :string(255)
+#  address    :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class OrderSerializer < ActiveModel::Serializer
-  attributes :id
+class Shop < ApplicationRecord
+  has_many :products
 end

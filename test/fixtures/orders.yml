@@ -3,7 +3,7 @@
 # Table name: orders
 #
 #  id         :integer          not null, primary key
-#  status     :string(255)      default("not delivery")
+#  status     :integer          default("Pending")
 #  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

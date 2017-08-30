@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users
+  resources :shops, only: [:show]
+  resources :search, only: [:index]
   resources :session, only: [:create, :destroy]
   resources :rating, only: [:update]
   resources :omni_auth, only: [:create]
