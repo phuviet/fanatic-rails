@@ -20,6 +20,6 @@ class ApplicationController < ActionController::API
 
   private
     def perform_authorization
-      render json: { error: "Unauthorize" } unless authorize_user
+      render json: { error: "Unauthorize" }, status: :unauthorized unless authorize_user
     end
 end

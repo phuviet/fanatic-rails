@@ -1,17 +1,18 @@
 # == Schema Information
 #
-# Table name: brands
+# Table name: order_items
 #
 #  id          :integer          not null, primary key
-#  branch      :string(255)
-#  category_id :integer
+#  quantity    :integer
+#  property_id :integer
+#  order_id    :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 
 require 'test_helper'
 
-class BrandTest < ActiveSupport::TestCase
+class OrderItemTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

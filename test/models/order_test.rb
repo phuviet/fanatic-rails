@@ -1,15 +1,18 @@
 # == Schema Information
 #
-# Table name: comments
+# Table name: orders
 #
 #  id         :integer          not null, primary key
-#  content    :text(65535)
-#  product_id :integer
+#  status     :string(255)      default("not delivery")
 #  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class CommentSerializer < ActiveModel::Serializer
-  attributes :id, :content
+require 'test_helper'
+
+class OrderTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
 end
