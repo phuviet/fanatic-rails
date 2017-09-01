@@ -17,4 +17,6 @@ class User < ApplicationRecord
   has_many :orders
   has_many :authentications
   has_many :comments
+
+  enum gender: %w[Male Female]
 end
