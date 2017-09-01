@@ -6,7 +6,11 @@ class ApplicationController < ActionController::API
   end
 
   def request_headers
-    [request.headers['Access-Token'], request.headers['Provider'], request.headers['Uid']]
+    [request.headers['Access-Token'], request.headers['Provider'], request.headers['Uid'], request.headers['Password']]
+  end
+
+  def request_headers_sign_up
+     [request.headers['Uid'], request.headers['Password']]
   end
 
   def authorize_user
