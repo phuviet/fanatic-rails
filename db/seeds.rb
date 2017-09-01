@@ -618,7 +618,7 @@ j = 100
     storage: 128,
     price: 100,
     product_id: j
-  )
+  ) 
 end
 
 k = 0
