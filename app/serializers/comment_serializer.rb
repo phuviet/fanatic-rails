@@ -11,5 +11,6 @@
 #
 
 class CommentSerializer < ActiveModel::Serializer
-  attributes :id, :content
+  attributes :id, :title, :content
+  has_one :user, serializer: User::CommentsSerializer
 end
