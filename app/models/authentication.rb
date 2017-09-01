@@ -40,16 +40,16 @@ class Authentication < ApplicationRecord
   end
 
   def generate_confirm_token
-    self.update_attributes(confirm_token: generate_access_token, confirm_send_at: Time.now.utc)
+    update_attributes(confirm_token: generate_access_token, confirm_send_at: Time.now)
   end
 
   def confirm_token_valid?
-    (self.confirm_send_at + 10.minutes) > Time.now.utc
+    (self.confirm_send_at + 10.minutes) > Time.now
   end
 
-  def validated_email
+  def confirmed_email
     self.confirm_token = nil
-    self.confirm_at = Time.now.utc
+    self.confirm_at = Time.now
   end
 
   def access_token

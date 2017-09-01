@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
-    uid, password = request_headers_sign_up
+    password = params[:password]
+    uid = params[:uid]
     if @user.save
-      password_confirmation = password
-      auth = @user.authentications.create(password: password, password_confirmation: password_confirmation, uid: uid, access_token: []);
+      auth = @user.authentications.create(password: password, uid: uid, access_token: []);
       auth.generate_confirm_token
       UserMailer.email_sign_up(auth).deliver_now
       render json: @user, status: :created
@@ -15,6 +15,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name)
+    params.require(:user).permit(:name, :phone, :gender, :avatar)
   end
 end
