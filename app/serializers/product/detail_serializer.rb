@@ -14,6 +14,8 @@
 #  updated_at    :datetime         not null
 #
 
-class ProductSerializer < ActiveModel::Serializer
-  attributes :id
+class Product::DetailSerializer < ProductSerializer
+  attributes :name, :description, :rating, :number_review
+  has_one :shop
+  has_many :properties
 end
