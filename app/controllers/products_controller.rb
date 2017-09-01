@@ -7,8 +7,6 @@ class ProductsController < ApplicationController
     params[:page] = params[:page].to_i > 0 ? params[:page].to_i : 1
     @count = Category.find_by(title: params[:title].capitalize).products.where(brand_id: params[:brand_id] ? params[:brand_id] : Brand.select(:id).where(category_id: Category.find_by(title: params[:title]).id)).count
     @products = Category.find_by(title: params[:title].capitalize).products.where(brand_id: params[:brand_id] ? params[:brand_id] : Brand.select(:id).where(category_id: Category.find_by(title: params[:title]).id)).limit(8).offset((params[:page] - 1) * 8)
-    # @count = Category.find_by(title: params[:title].capitalize).products.count
-    # @products = Category.find_by(title: params[:title].capitalize).products.limit(8).offset((params[:page] - 1) * 8)
     render json:  @products, include: [:shop, { properties: :images }], meta: { count: @count }
   end
 
