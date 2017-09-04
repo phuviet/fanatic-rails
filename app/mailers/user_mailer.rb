@@ -1,8 +1,8 @@
 class UserMailer < ApplicationMailer
   def email_sign_up(auth)
     @auth=auth
-    @url = 'http://172.17.19.131:4200/confirm_email/'
-    @url = @url + @auth.confirm_token
-    mail(to: @auth.uid, subject: 'Login Success')
+    @url = 'http://0.0.0.0:4200/confirm_email/'
+    @url = @url + @auth.confirm_token + "/" + @auth.uid + "/" + @auth.provider
+    mail(to: @auth.uid, subject: 'VERIFY YOUR ACCOUNT IN FANATIC WEBSITE!')
   end
 end

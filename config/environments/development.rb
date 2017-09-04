@@ -53,6 +53,6 @@ Rails.application.configure do
     authentication: :plain,
     domain: 'newbook.com',
     user_name: 'dhquan1910@gmail.com',
-    password: 'quando1910'
+    password: 'doquan1910'
   }
 end
