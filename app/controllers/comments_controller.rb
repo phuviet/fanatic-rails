@@ -11,12 +11,15 @@ class CommentsController < ApplicationController
 
   # POST /comments
   def create
+    binding.pry
     comment = Comment.create(
+      title: params[:title],
       content: params[:content],
       user_id: current_user.id,
       product_id: params[:product_id]
     )
     render json: comment, status: :created
+    binding.pry
   end
 
   # PATCH/PUT /comments/1
@@ -28,7 +31,7 @@ class CommentsController < ApplicationController
         render json: @comment.errors, status: :unprocessable_entity
       end
     else
-      render json: { error: 'Unauthorize' }
+      render json: { error: 'Unauthorize' }, status: :not_acceptable
     end
   end
 
@@ -37,7 +40,7 @@ class CommentsController < ApplicationController
     if @comment.user.id == current_user.id
       @comment.destroy
     else
-      render json: { error: 'Unauthorize' }
+      render json: { error: 'Unauthorize' }, status: :not_acceptable
     end
   end
 
@@ -49,6 +52,6 @@ class CommentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def comment_params
-      params.require(:comment).permit(:content)
+      params.require(:comment).permit(:title, :content)
     end
   end

@@ -3,20 +3,21 @@ class ProductsController < ApplicationController
 
   # GET /products
   def index
+    # binding.pry
     params[:page] = params[:page].to_i > 0 ? params[:page].to_i : 1
-    @count = Product.where(category_id: params[:category_id], brand_id: params[:brand_id] ? params[:brand_id] : Brand.select(:id).where(category_id: params[:category_id])).count
-    @products = Product.where(category_id: params[:category_id], brand_id: params[:brand_id] ? params[:brand_id] : Brand.select(:id).where(category_id: params[:category_id])).limit(8).offset((params[:page] - 1) * 8)
-    render json: { products: @products, count: @count }
+    @count = Category.find_by(title: params[:title].capitalize).products.where(brand_id: params[:brand_id] ? params[:brand_id] : Brand.select(:id).where(category_id: Category.find_by(title: params[:title]).id)).count
+    @products = Category.find_by(title: params[:title].capitalize).products.where(brand_id: params[:brand_id] ? params[:brand_id] : Brand.select(:id).where(category_id: Category.find_by(title: params[:title]).id)).limit(8).offset((params[:page] - 1) * 8)
+    render json:  @products, each_serializer: Product::DetailSerializer, include: [:shop, { properties: :images }], meta: { count: @count }
   end
 
   # GET /products/1
   def show
-    render json: @product
+    render json: @product, serializer: Product::DetailSerializer, include: [:shop, { properties: :images }]
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      @product = Product.includes_properties.find(params[:id])
+      @product = Product.find(params[:id])
     end
   end

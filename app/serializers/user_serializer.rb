@@ -5,6 +5,7 @@
 #  id         :integer          not null, primary key
 #  name       :string(255)
 #  phone      :string(255)
+#  address    :string(255)
 #  gender     :integer
 #  role       :integer          default(1)
 #  avatar     :string(255)
@@ -13,5 +14,5 @@
 #
 
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :phone, :gender, :role, :address, :avatar
+  attributes :id
 end
