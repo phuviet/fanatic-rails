@@ -18,7 +18,6 @@ class OrderItemSerializer < ActiveModel::Serializer
     {
       id: object.product.id,
       description: object.product.description,
-      image: object.product.image,
       rating: object.product.rating,
       number_review: object.product.number_review,
       property: object.property

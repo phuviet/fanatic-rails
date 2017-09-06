@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :perform_authorization, only: [:show, :update]
   def show
-    render json: current_user
+    render json: current_user, serializer: User::LoginSerializer
   end
 
   def update
