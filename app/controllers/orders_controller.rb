@@ -1,9 +1,13 @@
 class OrdersController < ApplicationController
   before_action :perform_authorization, only: [:create]
 
+  def index
+    
+  end
+
   # POST /orders
   def create
-    order = JSON.parse(params[:orders])
+    order = params[:orders]
     orders = current_user.orders.create
     order.each do |ord|
       orders.order_items.create(

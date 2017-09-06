@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :brands, only: [:index]
   resources :comments
-  resources :orders, only: [:create]
+  resources :orders, only: [:create, :index]
   resources :categories, only: [:index]
   resources :products, only: [:index, :show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
