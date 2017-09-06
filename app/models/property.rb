@@ -15,4 +15,5 @@
 class Property < ApplicationRecord
   belongs_to :product
   has_many :order_items
+  has_many :images
 end

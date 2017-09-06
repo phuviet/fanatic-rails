@@ -1,14 +1,14 @@
 # == Schema Information
 #
-# Table name: brands
+# Table name: images
 #
 #  id          :integer          not null, primary key
-#  branch      :string(255)
-#  category_id :integer
+#  image       :string(255)
+#  property_id :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 
-class BrandSerializer < ActiveModel::Serializer
-  attributes :id, :branch
+class ImageSerializer < ActiveModel::Serializer
+  attributes :image
 end

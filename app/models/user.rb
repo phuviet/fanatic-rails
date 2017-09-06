@@ -5,6 +5,7 @@
 #  id         :integer          not null, primary key
 #  name       :string(255)
 #  phone      :string(255)
+#  address    :string(255)
 #  gender     :integer
 #  role       :integer          default(1)
 #  avatar     :string(255)
@@ -16,4 +17,6 @@ class User < ApplicationRecord
   has_many :orders
   has_many :authentications
   has_many :comments
+
+  enum gender: %w[Male Female]
 end
