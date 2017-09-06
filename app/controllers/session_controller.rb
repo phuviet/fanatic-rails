@@ -1,7 +1,7 @@
 class SessionController < ApplicationController
   def create
     auth = Authentication.find_by(uid: params[:uid])
-    if auth && auth.authenticate(params[:password])
+    if auth && auth.authenticate(params[:password]) && auth.confirm_at
       auth.sign_in
       response_headers(auth.access_token.last, auth.provider, auth.uid)
       render json: auth.user, serializer: User::LoginSerializer, status: :created
