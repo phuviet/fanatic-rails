@@ -11,5 +11,5 @@
 #
 
 class ShopSerializer < ActiveModel::Serializer
-  attributes :id, :name, :image, :address
+  attributes :id, :name, :image, :address, :slogan, :logo, :description
 end

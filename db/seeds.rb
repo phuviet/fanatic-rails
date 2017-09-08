@@ -254,13 +254,19 @@ end
 Shop.create(
   name: 'Shop A',
   image: '',
-  address: 'Sơn Trà, Đà Nẵng'
+  address: 'Sơn Trà, Đà Nẵng',
+  slogan: 'Slogan shop A',
+  description: 'Description shop A',
+  logo: 'https://image.freepik.com/free-vector/abstract-logo-in-flame-shape_1043-44.jpg'
 )
 
 Shop.create(
   name: 'Shop B',
   image: '',
-  address: 'Sơn Trà, Đà Nẵng'
+  address: 'Sơn Trà, Đà Nẵng',
+  slogan: 'Slogan shop A',
+  description: 'Description shop A',
+  logo: 'https://image.freepik.com/free-vector/abstract-logo-in-flame-shape_1043-44.jpg'
 )
 
 i = 0

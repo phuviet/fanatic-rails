@@ -10,5 +10,8 @@
 #
 
 class BrandSerializer < ActiveModel::Serializer
-  attributes :id, :branch
+  attributes :id, :branch, :count
+  def count
+    object.products.count
+  end
 end

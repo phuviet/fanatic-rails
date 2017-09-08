@@ -5,13 +5,11 @@ class CommentsController < ApplicationController
   # GET /comments
   def index
     @comments = Comment.where(product_id: params[:id])
-
     render json: @comments
   end
 
   # POST /comments
   def create
-    binding.pry
     comment = Comment.create(
       title: params[:title],
       content: params[:content],
@@ -19,13 +17,13 @@ class CommentsController < ApplicationController
       product_id: params[:product_id]
     )
     render json: comment, status: :created
-    binding.pry
   end
 
   # PATCH/PUT /comments/1
   def update
     if @comment.user.id == current_user.id
       if @comment.update(comment_params)
+        binding.pry
         render json: @comment
       else
         render json: @comment.errors, status: :unprocessable_entity
