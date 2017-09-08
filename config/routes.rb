@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :update]
   resources :shops, only: [:show, :index]
   resources :search, only: [:index]
+  resources :history, only: [:index]
   resources :session, only: [:create, :destroy]
   resources :rating, only: [:update]
   resources :omni_auth, only: [:create]

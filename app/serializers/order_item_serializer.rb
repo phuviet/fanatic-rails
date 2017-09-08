@@ -13,10 +13,12 @@
 
 class OrderItemSerializer < ActiveModel::Serializer
   attributes :id, :quantity, :total, :product
+  belongs_to :order
 
   def product
     {
       id: object.product.id,
+      name: object.product.name,
       description: object.product.description,
       rating: object.product.rating,
       number_review: object.product.number_review,
