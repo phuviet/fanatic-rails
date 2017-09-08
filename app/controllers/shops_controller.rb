@@ -1,6 +1,12 @@
 class ShopsController < ApplicationController
   before_action :set_shop, only: [:show]
 
+  # GET /shops
+  def index
+    shop = Shop.all
+    render json: shop
+  end
+
   # GET /shops/1
   def show
     render json: @shop
