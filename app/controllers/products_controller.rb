@@ -12,9 +12,9 @@ class ProductsController < ApplicationController
 
   # GET /products/1
   def show
-    render json: @product, serializer: Product::DetailSerializer, include: [:shop, { properties: :images }]
+    render json: @product, serializer: Product::DetailSerializer, include: [:brand, :shop, { properties: :images }]
   end
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
