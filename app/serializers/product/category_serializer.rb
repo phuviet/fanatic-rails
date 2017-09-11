@@ -17,4 +17,5 @@
 class Product::CategorySerializer < ProductSerializer
   attributes :name, :description, :rating, :number_review
   has_many :properties
+  belongs_to :category
 end

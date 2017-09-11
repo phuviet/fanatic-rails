@@ -3,6 +3,6 @@ class ShopProductsController < ApplicationController
 		params[:page] = params[:page].to_i > 0 ? params[:page].to_i : 1
 		@count=Product.where(shop_id: params[:id]).count
 		@products=Product.where(shop_id: params[:id]).limit(12).offset((params[:page] - 1) * 12)
-		render json: @products, each_serializer: Product::DetailSerializer, include: [:shop, { properties: :images }], meta: { count: @count }
+		render json: @products, each_serializer: Product::DetailSerializer, include: [:shop, :category, { properties: :images }], meta: { count: @count }
 	end
 end

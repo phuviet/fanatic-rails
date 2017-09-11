@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   resources :confirm_user, only: [:create]
   resources :recommend_products
   resources :shop_products, only: [:index]
+  resources :clothes_care_products, only: [:index]
+  resources :electronic_care_products, only: [:index]
   require 'sidekiq/web'
   # ...
   mount Sidekiq::Web, at: '/sidekiq'

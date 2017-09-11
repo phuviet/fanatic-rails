@@ -19,4 +19,5 @@ class Product::DetailSerializer < ProductSerializer
   has_one :brand
   has_one :shop
   has_many :properties
+  belongs_to :category
 end
