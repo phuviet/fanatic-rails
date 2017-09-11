@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:index]
   resources :products, only: [:index, :show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :suggest_search, only: [:index]
   resources :users, only: [:show, :update]
   resources :shops, only: [:show, :index]
   resources :search, only: [:index]

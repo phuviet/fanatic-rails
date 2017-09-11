@@ -12,7 +12,7 @@
     gender: 1,
     role: 2,
     avatar: Faker::Avatar.image,
-    address: 'Sơn Trà, Đà Nẵng'
+    address: 'Sơn Trà, Đà Nẵng',
     )
 end
 
@@ -21,7 +21,8 @@ end
     password: '123456',
     uid: Faker::Internet.email,
     user_id: User.all.ids[rand(User.count)],
-    access_token: []
+    access_token: [],
+    confirm_at: Time.now
     )
 end
 
@@ -107,7 +108,7 @@ childwear.move_to_child_of(child)
 
 Shop.create(
   name: 'Shop A',
-  image: '',
+  image: 'http://www.dawnpet.com/shop-online-4.jpg',
   address: 'Sơn Trà, Đà Nẵng',
   slogan: 'Slogan shop A',
   description: 'Description shop A',
@@ -116,7 +117,7 @@ Shop.create(
 
 Shop.create(
   name: 'Shop B',
-  image: '',
+  image: 'http://www.theonlinecandyshop.com/assets/templates/onlinecandyshop-html5/images/tocs_logo_072615.png',
   address: 'Sơn Trà, Đà Nẵng',
   slogan: 'Slogan shop A',
   description: 'Description shop A',
@@ -144,6 +145,14 @@ k = 0
   )
 end
 
+k = 0
+9.times do
+  k = k + 1
+  Brand.create(
+    branch: brand_electronic[k - 1],
+    category_id: 10
+  )
+end
 product_mobilephone = [
   'Apple iPhone 7 32GB (Vàng Hồng)',
   'Apple iPhone 6S PLUS 32GB HỒNG',
@@ -545,7 +554,7 @@ j = 0
     rating: rand(1..5),
     number_review: rand(1..100),
     category_id: 10,
-    brand_id: 2,
+    brand_id: 11,
     shop_id: rand(1..2)
     )
   Property.create(
@@ -576,7 +585,7 @@ j = 4
     rating: rand(1..5),
     number_review: rand(1..100),
     category_id: 10,
-    brand_id: 1,
+    brand_id: 10,
     shop_id: rand(1..2)
     )
   Property.create(
@@ -607,7 +616,7 @@ j = 7
     rating: rand(1..5),
     number_review: rand(1..100),
     category_id: 10,
-    brand_id: 6,
+    brand_id: 15,
     shop_id: rand(1..2)
     )
   Property.create(
@@ -638,7 +647,7 @@ j = 10
     rating: rand(1..5),
     number_review: rand(1..100),
     category_id: 10,
-    brand_id: 8,
+    brand_id: 17,
     shop_id: rand(1..2)
     )
   Property.create(
