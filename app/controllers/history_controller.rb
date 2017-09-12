@@ -3,6 +3,6 @@ class HistoryController < ApplicationController
 
   def index
     @history = current_user.orders
-    render json: @history, each_serializer: OrderSerializer, include: [:order_items, {order_items: :product}]
+    render json: @history, each_serializer: OrderSerializer, include: [:order_items, { order_items: [product: [properties: :images]] }]
   end
 end
