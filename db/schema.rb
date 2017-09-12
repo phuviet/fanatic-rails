@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170830072810) do
+ActiveRecord::Schema.define(version: 20170908022120) do
+
+  create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "user_name"
+    t.string "email"
+    t.integer "gender"
+    t.integer "role"
+    t.string "phone"
+    t.string "password_digest"
+    t.string "confirm_token"
+    t.datetime "confirm_at"
+    t.string "avatar"
+    t.bigint "shop_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_admins_on_shop_id"
+  end
 
   create_table "authentications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "uid", default: "", null: false
