@@ -16,7 +16,8 @@
 class Category < ApplicationRecord
   acts_as_nested_set
 
-  has_many :brands
+  has_many :category_brands
+  has_many :brands, through: :category_brands
   has_many :properties
   has_many :products
 

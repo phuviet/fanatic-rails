@@ -141,18 +141,23 @@ k = 0
   k = k + 1
   Brand.create(
     branch: brand_electronic[k - 1],
-    category_id: 11
   )
 end
 
-k = 0
-9.times do
-  k = k + 1
-  Brand.create(
-    branch: brand_electronic[k - 1],
-    category_id: 10
+h = 0
+l = 10
+18.times do
+  h = h + 1
+  if h == 10
+    h = 1
+    l = l + 1
+  end
+  CategoryBrand.create(
+    category_id: l,
+    brand_id: h
   )
 end
+
 product_mobilephone = [
   'Apple iPhone 7 32GB (Vàng Hồng)',
   'Apple iPhone 6S PLUS 32GB HỒNG',
@@ -554,7 +559,7 @@ j = 0
     rating: rand(1..5),
     number_review: rand(1..100),
     category_id: 10,
-    brand_id: 11,
+    brand_id: 2,
     shop_id: rand(1..2)
     )
   Property.create(
@@ -585,7 +590,7 @@ j = 4
     rating: rand(1..5),
     number_review: rand(1..100),
     category_id: 10,
-    brand_id: 10,
+    brand_id: 1,
     shop_id: rand(1..2)
     )
   Property.create(
@@ -616,7 +621,7 @@ j = 7
     rating: rand(1..5),
     number_review: rand(1..100),
     category_id: 10,
-    brand_id: 15,
+    brand_id: 8,
     shop_id: rand(1..2)
     )
   Property.create(
@@ -647,7 +652,7 @@ j = 10
     rating: rand(1..5),
     number_review: rand(1..100),
     category_id: 10,
-    brand_id: 17,
+    brand_id: 7,
     shop_id: rand(1..2)
     )
   Property.create(
