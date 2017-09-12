@@ -2,7 +2,7 @@ class BrandsController < ApplicationController
 
   # GET /brands
   def index
-    @brands = Brand.where(category_id: Category.find_by(title: params[:title].capitalize).id)
-    render json: @brands
+    @brand = CategoryBrand.where(category_id: Category.find_by(title: params[:title].capitalize).id)
+    render json: @brand, option_name: params[:title]
   end
 end
