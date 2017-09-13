@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
 10.times do
   User.create(
     name: Faker::Name.name,
@@ -427,6 +429,52 @@ images_product_laptop2 = [
 
 ### MOBILE PHONE
 
+Shop.create(
+  name: 'Shop C',
+  image: '',
+  address: 'Sơn Trà, Đà Nẵng'
+)
+
+Shop.create(
+  name: 'Shop D',
+  image: '',
+  address: 'Sơn Trà, Đà Nẵng'
+)
+
+Shop.create(
+  name: 'Shop E',
+  image: '',
+  address: 'Sơn Trà, Đà Nẵng'
+)
+
+Shop.create(
+  name: 'Shop F',
+  image: '',
+  address: 'Sơn Trà, Đà Nẵng'
+)
+
+Shop.create(
+  name: 'Shop G',
+  image: '',
+  address: 'Sơn Trà, Đà Nẵng'
+)
+
+Shop.create(
+  name: 'Shop H',
+  image: '',
+  address: 'Sơn Trà, Đà Nẵng'
+)
+10.times do
+Admin.create(
+  name: Faker::Name.name,
+  user_name: Faker::Name.name,
+  email: Faker::Internet.email,
+  role: 1,
+  password: '123456',
+  avatar: Faker::Avatar.image,
+  shop_id: rand(1..8)
+  )
+end
 i = 0
 4.times do
   i = i + 1
