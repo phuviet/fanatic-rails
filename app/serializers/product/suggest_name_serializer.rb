@@ -14,8 +14,8 @@
 #  updated_at    :datetime         not null
 #
 
-class Product::CategorySerializer < ProductSerializer
-  attributes :name, :description, :rating, :number_review
+class Product::SuggestNameSerializer < ProductSerializer
+  attributes :name
   belongs_to :category
   has_many :properties
 end

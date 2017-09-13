@@ -10,5 +10,6 @@
 #
 
 class OrderSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :status, :created_at
+  has_many :order_items
 end

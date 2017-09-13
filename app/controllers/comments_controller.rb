@@ -15,7 +15,9 @@ class CommentsController < ApplicationController
       content: params[:content],
       user_id: current_user.id,
       product_id: params[:product_id]
-    )
+      )
+    product = Product.find(params[:product_id])
+    product.update_attribute(:number_review, product.number_review + 1)
     render json: comment, status: :created
   end
 
@@ -37,6 +39,8 @@ class CommentsController < ApplicationController
   def destroy
     if @comment.user.id == current_user.id
       @comment.destroy
+      product = Product.find(params[:product_id])
+      product.update_attribute(:number_review, product.number_review - 1)
     else
       render json: { error: 'Unauthorize' }, status: :not_acceptable
     end

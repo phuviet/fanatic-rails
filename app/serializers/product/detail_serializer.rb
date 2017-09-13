@@ -16,6 +16,7 @@
 
 class Product::DetailSerializer < ProductSerializer
   attributes :name, :description, :rating, :number_review
+  belongs_to :category
   has_one :brand
   has_one :shop
   has_many :properties

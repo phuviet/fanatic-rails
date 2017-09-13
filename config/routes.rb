@@ -5,15 +5,19 @@ Rails.application.routes.draw do
   resources :categories, only: [:index]
   resources :products, only: [:index, :show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :suggest_search, only: [:index]
   resources :users, only: [:show, :update]
   resources :shops, only: [:show, :index]
   resources :search, only: [:index]
+  resources :history, only: [:index]
   resources :session, only: [:create, :destroy]
   resources :rating, only: [:update]
   resources :omni_auth, only: [:create]
   resources :confirm_user, only: [:create]
   resources :recommend_products
   resources :shop_products, only: [:index]
+  resources :clothes_care_products, only: [:index]
+  resources :electronic_care_products, only: [:index]
   require 'sidekiq/web'
   # ...
   mount Sidekiq::Web, at: '/sidekiq'
