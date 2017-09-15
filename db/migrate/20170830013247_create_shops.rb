@@ -7,7 +7,7 @@ class CreateShops < ActiveRecord::Migration[5.1]
       t.string :logo
       t.string :description
       t.string :slogan
-      
+
       t.timestamps
     end
   end

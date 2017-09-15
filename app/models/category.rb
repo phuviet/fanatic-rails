@@ -22,17 +22,16 @@ class Category < ApplicationRecord
   has_many :products
 
   def self.menu_categories
-    categories = Hash.new
+    categories = {}
     Category.roots.each do |cat|
-      cat_menu = Hash.new
+      cat_menu = {}
       cat.children.each do |childCat|
-
-        cat_leaf_at = Hash.new
+        cat_leaf_at = {}
         child = childCat.children.to_a
         childC = child.to_a
         childCat.children.each_with_index do |cCat, index|
           if cCat.descendants != []
-            cat_leaf = Hash.new
+            cat_leaf = {}
             cat_leaf[cCat.title] = cCat.children
             childC.delete_at(index)
             childC[index] = cat_leaf

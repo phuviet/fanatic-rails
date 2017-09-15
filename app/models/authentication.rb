@@ -29,8 +29,8 @@ class Authentication < ApplicationRecord
   end
 
   def add_token(token = generate_access_token)
-    _new_tokens = self.access_token
-    _new_tokens.shift() if _new_tokens.length >= 2
+    _new_tokens = access_token
+    _new_tokens.shift if _new_tokens.length >= 2
     _new_tokens.push(token)
     _new_tokens
   end
@@ -44,7 +44,7 @@ class Authentication < ApplicationRecord
   end
 
   def confirm_token_valid?
-    (self.confirm_send_at + 10.minutes) > Time.now
+    (confirm_send_at + 10.minutes) > Time.now
   end
 
   def confirmed_email
@@ -53,7 +53,7 @@ class Authentication < ApplicationRecord
   end
 
   def access_token
-    JSON.parse(self[:access_token])["tokens"]
+    JSON.parse(self[:access_token])['tokens']
   end
 
   def access_token=(value)
@@ -61,7 +61,7 @@ class Authentication < ApplicationRecord
   end
 
   def remove_token(token)
-    new_tokens = self.access_token
+    new_tokens = access_token
     new_tokens.delete(token).present? ? update(access_token: new_tokens) : false
   end
 
@@ -96,5 +96,4 @@ class Authentication < ApplicationRecord
     end
     _auth
   end
-
 end

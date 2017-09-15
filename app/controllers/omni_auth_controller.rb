@@ -3,7 +3,7 @@ class OmniAuthController < ApplicationController
   def create
     access_token, provider, uid = request_headers
     authSocial = Koala::Facebook::API.new(access_token)
-    auth = Authentication.sign_in_with_account_social(access_token, provider, uid, authSocial.get_object("me"), authSocial.get_picture(uid))
+    auth = Authentication.sign_in_with_account_social(access_token, provider, uid, authSocial.get_object('me'), authSocial.get_picture(uid))
     if auth
       response_headers(access_token, provider, uid)
       render json: auth.user, status: 200
