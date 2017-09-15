@@ -1,26 +1,26 @@
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
-
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.3'
 # Use mysql as the database for Active Record
 gem 'mysql2'
 # Use Puma as the app server
-gem 'puma', '~> 3.7'
-gem 'rack-cors'
-gem 'omniauth-facebook'
-gem 'omniauth-google-oauth2'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'awesome_nested_set'
-gem 'koala'
-gem 'redis'
-gem 'sidekiq'
 gem 'daemon-spawn', '0.4.2'
+gem 'koala'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'puma', '~> 3.7'
+gem 'rack-cors'
+gem 'redis'
+gem 'rubocop'
+gem 'sidekiq'
 gem 'sinatra', require: false
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -38,12 +38,13 @@ gem 'sinatra', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'annotate'
+  gem 'bcrypt'
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'faker'
   gem 'pry'
   gem 'pry-rails'
-  gem 'annotate'
-  gem 'bcrypt'
+  gem 'bullet'
 end
 
 group :development do
@@ -54,4 +55,4 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

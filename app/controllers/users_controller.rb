@@ -1,19 +1,19 @@
 class UsersController < ApplicationController
-  before_action :perform_authorization, only: [:show, :update]
+  before_action :perform_authorization, only: %i[show update]
 
   def create
     user = User.new(user_params)
     if user.save
       if !Authentication.find_by(uid: params[:uid])
-        auth = user.authentications.create(password: params[:password], uid: params[:uid], access_token: []);
+        auth = user.authentications.create(password: params[:password], uid: params[:uid], access_token: [])
         auth.generate_confirm_token
         ConfirmEmailSignUpJob.perform_later(auth)
         render json: user, status: :created
-      else 
+      else
         user.delete
         render json: { error: 'Your email is valid!' }
       end
-    else      
+    else
       render json: user.errors, status: :unprocessable_entity
     end
   end
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   def update
     if current_user.update(user_params)
       render json: current_user, serializer: User::LoginSerializer
-    else 
+    else
       render json: current_user.errors, status: :unprocessable_entity
     end
   end

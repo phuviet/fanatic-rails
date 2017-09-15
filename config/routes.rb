@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
   resources :brands, only: [:index]
   resources :comments
-  resources :orders, only: [:create, :index]
+  resources :orders, only: %i[create index]
   resources :categories, only: [:index]
-  resources :products, only: [:index, :show]
+  resources :products, only: %i[index show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :suggest_search, only: [:index]
-  resources :users, only: [:show, :update]
-  resources :shops, only: [:show, :index]
+  resources :users, only: %i[show update create]
+  resources :shops, only: %i[show index]
   resources :search, only: [:index]
   resources :history, only: [:index]
-  resources :session, only: [:create, :destroy]
+  resources :session, only: %i[create destroy]
   resources :rating, only: [:update]
   resources :omni_auth, only: [:create]
   resources :confirm_user, only: [:create]

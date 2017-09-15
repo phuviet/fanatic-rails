@@ -1,7 +1,6 @@
 class CreateAuthentications < ActiveRecord::Migration[5.1]
   def change
     create_table :authentications do |t|
-
       # t.string :email
       t.string :uid, null: false, default: ''
       t.string :provider, null: false, default: 'email'
@@ -19,6 +18,6 @@ class CreateAuthentications < ActiveRecord::Migration[5.1]
 
     # add_index :authentications, :email, unique: true
     add_index :authentications, :uid, unique: true
-    add_index :authentications, [:uid, :provider], unique: true
+    add_index :authentications, %i[uid provider], unique: true
   end
 end

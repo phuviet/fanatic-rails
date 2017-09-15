@@ -18,6 +18,7 @@ class Product < ApplicationRecord
   belongs_to :category
   belongs_to :brand
   belongs_to :shop
+  has_one :property
   has_many :properties
   has_many :comments
   has_many :order_items
