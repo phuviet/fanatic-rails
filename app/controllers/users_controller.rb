@@ -23,6 +23,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    result = Cloudinary::Uploader.destroy(current_user.avatar, options = {}) if current_user.avatar != params[:user][:avatar]
     if current_user.update(user_params)
       render json: current_user, serializer: User::LoginSerializer
     else

@@ -503,39 +503,49 @@ product_men_shoes_image2 = [
 
 Shop.create(
   name: 'Shop C',
-  image: '',
-  address: 'Sơn Trà, Đà Nẵng'
+  image: 'http://blog.polipay.co.nz/online-shopping.gif',
+  address: '43 Tống Phước Phổ, Đà Nẵng',
+  slogan: 'Slogan shop C',
+  description: 'Description shop C',
+  logo: 'http://www.truthmedia.gr/sites/default/files/online-shopping-ecommerce-ss-1920_1.png'
 )
 
 Shop.create(
   name: 'Shop D',
-  image: '',
-  address: 'Sơn Trà, Đà Nẵng'
+  image: 'http://listdose.co/wp-content/uploads/2013/08/deprives-you-of-tangibility.jpg',
+  address: '43 Tống Phước Phổ, Đà Nẵng',
+  slogan: 'Slogan shop D',
+  description: 'Description shop D',
+  logo: 'https://thumbs.dreamstime.com/z/mobile-technology-shopping-concept-illustration-28893578.jpg'
 )
 
 Shop.create(
   name: 'Shop E',
-  image: '',
-  address: 'Sơn Trà, Đà Nẵng'
+  image: 'https://evolvinglolo.files.wordpress.com/2015/06/shop-online-24-7.gif?w=325&h=232&crop=1',
+  address: '43 Tống Phước Phổ, Đà Nẵng',
+  slogan: 'Slogan shop E',
+  description: 'Description shop E',
+  logo: 'https://thumbs.dreamstime.com/z/colored-paper-shopping-bags-online-shop-text-white-background-44092868.jpg'
 )
 
 Shop.create(
   name: 'Shop F',
-  image: '',
-  address: 'Sơn Trà, Đà Nẵng'
+  image: 'https://thumbs.dreamstime.com/z/online-shopping-23044026.jpg',
+  address: '43 Tống Phước Phổ, Đà Nẵng',
+  slogan: 'Slogan shop C',
+  description: 'Description shop F',
+  logo: 'https://thumbs.dreamstime.com/z/online-shopping-cart-white-background-34993217.jpg'
 )
 
 Shop.create(
   name: 'Shop G',
-  image: '',
-  address: 'Sơn Trà, Đà Nẵng'
+  image: 'http://cdn.indiamarks.com/wp-content/uploads/Online-shopping-in-India.jpg',
+  address: '43 Tống Phước Phổ, Đà Nẵng',
+  slogan: 'Slogan shop G',
+  description: 'Description shop G',
+  logo: 'https://static7.depositphotos.com/1003153/721/v/950/depositphotos_7216236-stock-illustration-i-love-shopping-icon.jpg'
 )
 
-Shop.create(
-  name: 'Shop H',
-  image: '',
-  address: 'Sơn Trà, Đà Nẵng'
-)
 10.times do
 Admin.create(
   name: Faker::Name.name,
