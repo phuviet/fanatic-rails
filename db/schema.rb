@@ -66,9 +66,9 @@ ActiveRecord::Schema.define(version: 20170912064502) do
     t.index ["rgt"], name: "index_categories_on_rgt"
   end
 
-  create_table "category_brands", primary_key: ["brand_id", "category_id"], force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "category_id", null: false
-    t.bigint "brand_id", null: false
+  create_table "category_brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "category_id"
+    t.bigint "brand_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["brand_id"], name: "index_category_brands_on_brand_id"
