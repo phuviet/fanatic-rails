@@ -223,6 +223,8 @@ l = 0
   )
 end
 
+
+
 product_mobilephone = [
   'Apple iPhone 7 32GB (Vàng Hồng)',
   'Apple iPhone 6S PLUS 32GB HỒNG',
@@ -625,6 +627,16 @@ l = 9
   )
 end
 
+l = 9
+9.times do
+  l += 1
+  next if l == 16 || l == 18
+  CategoryBrand.create(
+    category_id: 26,
+    brand_id: l
+  )
+end
+
 product_men_shoes = [
   'Nike Air VaporMax Flyknit iD',
   'Nike Flyknit Trainer',
@@ -777,6 +789,161 @@ product_men_shoes_image2 = [
   '102_gg8ox8'
 ]
 
+
+product_women_shoes = [
+  'CLYDE FASHION KIKU SNEAKERS',
+  'PLATFORM MID KIKU WOMEN’S SNEAKERS',
+  'SUEDE XL LACE VR WOMEN\'S SNEAKERS',
+  'SUEDE SUMMER SATIN PLATFORM SNEAKERS',
+  'CRAZYTRAIN RPU PRO SHOES',
+  'CRAZYTRAIN ELITE SHOES',
+  'CRAZYTRAIN SHOES',
+  'NIKE CORTEZ iD',
+  'NIKE FREE RN FLYKNIT 2017'
+]
+
+property_product_womenshoes1 = [
+  {
+    color: 'White',
+    size: 32,
+    price: 110
+  },
+  {
+    color: 'White',
+    size: 32,
+    price: 130
+  },
+  {
+    color: 'Black',
+    size: 32,
+    price: 95
+  },
+  {
+    color: 'Pink',
+    size: 32,
+    price: 110
+  },
+  {
+    color: 'Black',
+    size: 32,
+    price: 200
+  },
+  {
+    color: 'White',
+    size: 32,
+    price: 180
+  },
+  {
+    color: 'Yellow',
+    size: 32,
+    price: 180
+  },
+  {
+    color: 'Black',
+    size: 32,
+    price: 160
+  },
+  {
+    color: 'Red',
+    size: 32,
+    price: 180
+  },
+]
+
+product_women_shoes_image1 = [
+  '105_d1ygq4',
+  '107_nv3dps',
+  '109_bofv2p',
+  '111_kv10ki',
+  '113_ljr6mo',
+  '115_kymumo',
+  '117_q9qxqc',
+  '119_imwlm3',
+  '121_xxip7v',
+
+]
+product_women_shoes_image2 = [
+  '106_t87syk',
+  '108_qzitc2',
+  '110_yeptec',
+  '112_zhbrpl',
+  '114_ardqmw',
+  '116_ldid0g',
+  '118_ycmmqp',
+  '120_uvub9z',
+  '122_n62zw2'
+]
+
+property_product_womenshoes2 = [
+  {
+    color: 'Blue',
+    size: 33,
+    price: 110
+  },
+  {
+    color: 'Black',
+    size: 32,
+    price: 140
+  },
+  {
+    color: 'Gray',
+    size: 32,
+    price: 110
+  },
+  {
+    color: 'White',
+    size: 32,
+    price: 110
+  },
+  {
+    color: 'White',
+    size: 32,
+    price: 200
+  },
+  {
+    color: 'Black',
+    size: 31,
+    price: 160
+  },
+  {
+    color: 'Silver',
+    size: 33,
+    price: 180
+  },
+  {
+    color: 'White',
+    size: 32,
+    price: 170
+  },
+  {
+    color: 'Blue',
+    size: 32,
+    price: 180
+  }
+]
+
+product_women_shoes_image3 = [
+  '137_anztfz',
+  '139_af5kxt',
+  '127_ckqubp',
+  '129_euujq8',
+  '135_dp7ghp',
+  '133_h1n42m',
+  '131_jflgm2',
+  '123_rpe607',
+  '125_jfvaxb'
+]
+product_women_shoes_image4 = [
+  '138_aojnom',
+  '140_exq6ra',
+  '128_vc7egb',
+  '130_ksnr84',
+  '136_spvw8j',
+  '134_xan16x',
+  '132_inynd4',
+  '124_s5tdlw',
+  '126_bqotf0'
+]
 ### MOBILE PHONE
 
 Shop.create(
@@ -1317,18 +1484,131 @@ j = 8
   )
 end
 
-proper = Property.create(
-  product_id: 39,
-  price: 450,
-  size: 33,
-  color: 'Gray'
-)
+# proper = Property.create(
+#   product_id: 39,
+#   price: 450,
+#   size: 33,
+#   color: 'Gray'
+# )
 
-Image.create(
-  property_id: proper.id,
-  image: '103_d4om3p'
-)
-Image.create(
-  property_id: proper.id,
-  image: '104_fuyxfp'
-)
+# Image.create(
+#   property_id: proper.id,
+#   image: '103_d4om3p'
+# )
+# Image.create(
+#   property_id: proper.id,
+#   image: '104_fuyxfp'
+# )
+
+### WOMEN'S SHOES
+
+j = 0
+4.times do
+  j += 1
+  i += 1
+  Product.create(
+    name: product_women_shoes[j - 1],
+    description: Faker::Lorem.paragraph,
+    rating: rand(1..5),
+    number_review: rand(1..100),
+    category_id: 26,
+    brand_id: 12,
+    shop_id: rand(1..2)
+  )
+  Property.create(
+    product_id: i,
+    price: property_product_womenshoes1[j - 1][:price],
+    size: property_product_womenshoes1[j - 1][:size],
+    color: property_product_womenshoes1[j - 1][:color]
+  )
+  Image.create(
+    property_id: i,
+    image: product_women_shoes_image1[j - 1]
+  )
+  next unless product_women_shoes_image2[j - 1] != nil
+  Image.create(
+    property_id: i,
+    image: product_women_shoes_image2[j - 1]
+  )
+end
+
+j = 4
+3.times do
+  j += 1
+  i += 1
+  Product.create(
+    name: product_women_shoes[j - 1],
+    description: Faker::Lorem.paragraph,
+    rating: rand(1..5),
+    number_review: rand(1..100),
+    category_id: 26,
+    brand_id: 11,
+    shop_id: rand(1..2)
+  )
+  Property.create(
+    product_id: i,
+    price: property_product_womenshoes1[j - 1][:price],
+    size: property_product_womenshoes1[j - 1][:size],
+    color: property_product_womenshoes1[j - 1][:color]
+  )
+  Image.create(
+    property_id: i,
+    image: product_women_shoes_image1[j - 1]
+  )
+  next unless product_women_shoes_image2[j - 1] != nil
+  Image.create(
+    property_id: i,
+    image: product_women_shoes_image2[j - 1]
+  )
+end
+
+j = 7
+2.times do
+  j += 1
+  i += 1
+  Product.create(
+    name: product_women_shoes[j - 1],
+    description: Faker::Lorem.paragraph,
+    rating: rand(1..5),
+    number_review: rand(1..100),
+    category_id: 26,
+    brand_id: 10,
+    shop_id: rand(1..2)
+  )
+  Property.create(
+    product_id: i,
+    price: property_product_womenshoes1[j - 1][:price],
+    size: property_product_womenshoes1[j - 1][:size],
+    color: property_product_womenshoes1[j - 1][:color]
+  )
+  Image.create(
+    property_id: i,
+    image: product_women_shoes_image1[j - 1]
+  )
+  next unless product_women_shoes_image2[j - 1] != nil
+  Image.create(
+    property_id: i,
+    image: product_women_shoes_image2[j - 1]
+  )
+end
+
+k = 52
+y = 0
+9.times do
+  y += 1
+  proper = Property.create(
+    product_id: k,
+    price: property_product_womenshoes2[y - 1][:price],
+    size: property_product_womenshoes2[y - 1][:size],
+    color: property_product_womenshoes2[y - 1][:color]
+  ) if property_product_womenshoes2[y - 1] != nil
+  Image.create(
+    property_id: proper.id,
+    image: product_women_shoes_image3[y - 1]
+  ) if product_women_shoes_image3[y - 1] != nil
+  Image.create(
+    property_id: proper.id,
+    image: product_women_shoes_image4[y - 1]
+  ) if product_women_shoes_image4[y - 1] != nil
+  k += 1
+end
