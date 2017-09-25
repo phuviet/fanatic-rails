@@ -48,7 +48,7 @@ User.create(
   phone: Faker::PhoneNumber.phone_number,
   gender: 0,
   role: 2,
-  avatar: user_avatar[t],
+  avatar: 'sa7cmaa1fenmclgpvale',
   address: '100 Thọ An, Thọ Quang, Sơn Trà, Đà Nẵng'
 )
 
@@ -57,7 +57,7 @@ User.create(
   phone: Faker::PhoneNumber.phone_number,
   gender: 0,
   role: 2,
-  avatar: user_avatar[t],
+  avatar: 'rslewz8r7amtzmmkcc4x',
   address: '43 Tống Phước Phổ'
 )
 
