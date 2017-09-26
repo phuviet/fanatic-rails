@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 20170912064502) do
   end
 
   create_table "order_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "status", default: 0
     t.integer "quantity"
     t.integer "total"
     t.bigint "property_id"
@@ -149,6 +150,7 @@ ActiveRecord::Schema.define(version: 20170912064502) do
     t.string "logo"
     t.string "description"
     t.string "slogan"
+    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

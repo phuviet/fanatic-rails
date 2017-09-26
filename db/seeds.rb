@@ -1002,6 +1002,37 @@ Admin.create(
   shop_id: rand(1..8)
   )
 end
+Admin.create(
+  name: "Do Hong Quan",
+  user_name: "adminquan",
+  password: "123456",
+  shop_id: 1,
+  role: 0
+  )
+Admin.create(
+  name: "Shop Quan",
+  user_name: "shopquan",
+  password: "123456",
+  shop_id: 2,
+  role: 1
+  )
+Admin.create(
+  name: "Assist Quan",
+  user_name: "assistquan",
+  password: "123456",
+  shop_id: 2,
+  role: 2
+  )
+4.times do
+  Order.create(
+    status: rand(0..2),
+    receiver: Faker::Name.name,
+    address: "DaNang, VIetNam",
+    phone: "12345565",
+    user_id: rand(1..10)
+    )
+end
+
 i = 0
 4.times do
   i += 1
@@ -1271,6 +1302,35 @@ j = 0
     image: product_men_shoes_image2[j - 1]
   )
 end
+
+OrderItem.create(
+  quantity: rand(0..2),
+  total: rand(0..100),
+  property_id: 8,
+  order_id: rand(1..4),
+  status: rand(0..2)  
+)
+OrderItem.create(
+  quantity: rand(0..2),
+  total: rand(0..100),
+  property_id: 12,
+  order_id: rand(1..4),
+  status: rand(0..2)  
+)
+OrderItem.create(
+  quantity: rand(0..2),
+  total: rand(0..100),
+  property_id: 13,
+  order_id: rand(1..4),
+  status: rand(0..2)  
+)
+OrderItem.create(
+  quantity: rand(0..2),
+  total: rand(0..100),
+  property_id: 17,
+  order_id: rand(1..4),
+  status: rand(0..2)  
+)
 
 j = 4
 5.times do
@@ -1612,3 +1672,4 @@ y = 0
   ) if product_women_shoes_image4[y - 1] != nil
   k += 1
 end
+
