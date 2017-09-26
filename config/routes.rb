@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :recommend_products
   resources :shop_products, only: [:index]
   resources :clothes_care_products, only: [:index]
+  resources :best_seller_products, only: [:index]
   resources :electronic_care_products, only: [:index]
   require 'sidekiq/web'
   # ...
